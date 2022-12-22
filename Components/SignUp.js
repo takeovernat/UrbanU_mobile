@@ -6,10 +6,13 @@ import back from '../assets/bag.jpg'
 import Color from '../assets/Color';
 
 
-const SignIn = ({navigation}) =>{
+const SignUp = ({navigation}) =>{
 
     const [username, setUsername] = React.useState(''); //holds username
     const [password, setPassword] = React.useState(''); //holds password
+    const [name, setname] = useState("");
+    const [passTwo, setPassTwo] = useState('');
+    const [email, setemail] = useState('');
     const windowHeight = Dimensions.get('window').height;
     const windowWidth = Dimensions.get('window').width;
 
@@ -24,42 +27,65 @@ const SignIn = ({navigation}) =>{
             
             <ScrollView >
             <View style={styles.textInputContainer}>
-                <TextInput
-                    //value={username}
-                    placeholder = 'Username'
-                    placeholderTextColor="black"
-                    placeholderTextFont="Noteworthy"
-                    style={styles.textInput}
-                    autoCapitalize='none'
-                    onChangeText={(user) => setUsername(user.trim())}
-                    selectionColor="white"
-                />
-                <TextInput
-                    placeholder="Password"
-                    placeholderTextColor="black"
-                    secureTextEntry={true}
-                    style={styles.textInput}
-                    onChangeText={(pass) => setPassword(pass.trim()) }
-                    selectionColor="white"
-                />
+            <TextInput
+                        placeholder="Name"
+                        onChangeText={(name) => setname(name.trim())}
+                        placeholderTextColor="black"
+                        placeholderTextFont="Noteworthy"
+                        autoCapitalize='none'
+                        style={styles.textInput}
+                        selectionColor="#1A374D"
+                    />
+            <TextInput
+                        placeholder="Username"
+                        onChangeText={(user) => setUsername(user.trim())}
+                        placeholderTextColor="black"
+                        placeholderTextFont="Noteworthy"
+                        autoCapitalize='none'
+                        style={styles.textInput}
+                        selectionColor="#1A374D"
+            />
+            <TextInput
+                        placeholder="Email"
+                        placeholderTextColor="black"
+                        placeholderTextFont="Noteworthy"
+                        autoCapitalize='none'
+                        style={styles.textInput}
+                        onChangeText={(email) => setemail(email.trim())}
+                        selectionColor="#1A374D"
+            />
+            <TextInput
+                        placeholder="Password"
+                        placeholderTextColor="black"
+                        placeholderTextFont="Noteworthy"
+                        secureTextEntry={true}
+                        style={styles.textInput}
+                        onChangeText={(pass1) => setpass(pass1.trim())}
+                        selectionColor="#1A374D"
+            />
+            <TextInput
+                        placeholder="Retype Password"
+                        placeholderTextColor="black"
+                        placeholderTextFont="Noteworthy"
+                        secureTextEntry={true}
+                        style={styles.textInput}
+                        onChangeText={(pass2) => setPassTwo(pass2.trim())}
+                        selectionColor="#1A374D"
+            />
 
                 <View>   
                     <View style={styles.formBottoms}>
-                        <TouchableOpacity style={styles.login} onPress={""}> 
-                            <Text>Login</Text>
-                        </TouchableOpacity>
-                             
-                        <TouchableOpacity style={styles.forgot}   onPress={""}> 
-                        <Text>Forgot password</Text>
+                        <TouchableOpacity style={styles.signup} onPress={""}> 
+                            <Text>Sign Up</Text>
                         </TouchableOpacity>
 
                     </View>
                 </View>
             </View>
             <View style={styles.signupView}>
-                <Text style={styles.note}>Don't have an account?</Text>
-                <TouchableOpacity style={styles.signup}  title="Sign Up" onPress={()=> navigation.navigate("SignUp")}> 
-                    <Text>Sign up</Text>
+                <Text style={styles.note}>have an account?</Text>
+                <TouchableOpacity style={styles.login} onPress={()=> navigation.pop()}> 
+                    <Text>Login</Text>
                 </TouchableOpacity>
             </View>
             </ScrollView>
@@ -69,7 +95,7 @@ const SignIn = ({navigation}) =>{
 );
 }
 
-export default SignIn;
+export default SignUp;
 
 const styles = StyleSheet.create({
     btnSignupContainer: {
@@ -106,7 +132,7 @@ const styles = StyleSheet.create({
     textInputContainer: {
         width: Dimensions.get('window').width,
         alignItems: 'center',
-        marginTop: 160
+        marginTop: 80
     },
     formBottoms: {
         width: Dimensions.get('window').width,
@@ -114,7 +140,7 @@ const styles = StyleSheet.create({
         marginTop: 25
     },
     login: {
-        backgroundColor:Color.blue2,
+        backgroundColor:Color.puple,
         padding:10,
         borderRadius:13,
         marginTop: 30,
@@ -143,7 +169,7 @@ const styles = StyleSheet.create({
         marginTop: "20%",
     },
     signup:{
-        backgroundColor:Color.puple,
+        backgroundColor:Color.blue2,
         padding:10,
         borderRadius:13,
         marginTop: 10,
